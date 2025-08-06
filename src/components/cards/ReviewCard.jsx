@@ -1,4 +1,5 @@
 import React from "react";
+import StarRating from "./../StarRating.jsx";
 
 function ReviewCard({ name, id, image, date, rating, reviewText }) {
   return (
@@ -15,10 +16,7 @@ function ReviewCard({ name, id, image, date, rating, reviewText }) {
         </div>
       </div>
       <div className="mt-3">
-        <p className="text-red-500 text-lg">
-          {"★".repeat(rating)}
-          <span className="text-gray-300">{"☆".repeat(5 - rating)}</span>
-        </p>
+        <StarRating rating={rating} />
         <p className="mt-2 text-gray-700 leading-relaxed">{reviewText}</p>
       </div>
     </div>
