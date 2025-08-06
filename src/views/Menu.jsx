@@ -6,9 +6,9 @@ import Navbar from "../components/Navbar";
 function Menu() {
   return (
     <>
-      <Navbar />
+      <Navbar openNav="/menu" />
       <div className="min-h-screen bg-gray-100 py-10 px-4">
-        <h1 className="text-4xl font-bold text-center text-green-600 mb-10">
+        <h1 className="text-4xl font-bold text-center text-gray-700 mb-10">
           Our Delicious Menu
         </h1>
         <div className="flex flex-wrap justify-center gap-10">

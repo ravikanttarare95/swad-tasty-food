@@ -1,7 +1,13 @@
 import React from "react";
 
 function Cart() {
-  return <div>Cart</div>;
+  return (
+    <>
+      {" "}
+      <Navbar openNav="/about" />
+      <div>About</div>
+    </>
+  );
 }
 
 export default Cart;

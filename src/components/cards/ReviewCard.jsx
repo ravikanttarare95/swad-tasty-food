@@ -8,10 +8,10 @@ function ReviewCard({ name, id, image, date, rating, reviewText }) {
         <img
           src={image}
           alt={name}
-          className="w-14 h-14 rounded-full border-2 border-green-500"
+          className="w-14 h-14 rounded-full"
         />
         <div>
-          <h3 className="text-lg font-semibold text-green-700">{name}</h3>
+          <h3 className="text-lg font-semibold text-gray-700">{name}</h3>
           <p className="text-sm text-gray-500">{date}</p>
         </div>
       </div>
