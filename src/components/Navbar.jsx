@@ -7,7 +7,7 @@ import { ShoppingBag, Menu, X } from "lucide-react";
 function Navbar() {
   const [isHidden, setIsHidden] = useState(true);
   return (
-    <nav className="bg-white shadow-md text-gray-800">
+    <nav className="sticky top-0 bg-white z-50 shadow-md text-gray-800">
       <div className="px-4 py-3 flex flex-col md:flex-row items-center justify-between">
         {/* Logo + Brand Name */}
         <div className="flex justify-between w-full md:w-fit items-center">
