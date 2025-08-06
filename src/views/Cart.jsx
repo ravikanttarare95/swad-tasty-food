@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "./../components/Navbar";
 
 function Cart() {
   return (
     <>
       {" "}
-      <Navbar openNav="/about" />
-      <div>About</div>
+      <Navbar/>
+      <div>Cart</div>
     </>
   );
 }
