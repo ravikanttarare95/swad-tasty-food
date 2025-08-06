@@ -1,5 +1,6 @@
 import React from "react";
 import MENU_CARDS_DATA from "./../configs/Menu";
+import Button from "./../components/Button";
 
 function Menu() {
   return (
@@ -13,7 +14,7 @@ function Menu() {
           return (
             <div
               key={id}
-              className="bg-white shadow-lg rounded-xl overflow-hidden w-72 transform transition duration-300 hover:scale-105 border border-gray-200"
+              className="bg-white shadow-lg rounded-xl overflow-hidden w-[90%] sm:w-72 transform transition duration-300 hover:scale-105 border border-gray-200"
             >
               <img
                 src={image}
@@ -29,9 +30,10 @@ function Menu() {
                   <span className="text-lg font-bold text-red-600">
                     ₹{price}
                   </span>
-                  <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md text-sm font-semibold shadow-sm">
-                    Order Now
-                  </button>
+                  <Button
+                    className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md text-sm font-semibold shadow-sm"
+                    btnTitle={"Order Now"}
+                  />
                 </div>
               </div>
             </div>

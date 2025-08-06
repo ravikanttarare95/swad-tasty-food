@@ -1,7 +1,11 @@
 import React from "react";
 
-function Button() {
-  return <div>Button</div>;
+function Button({ btnTitle }) {
+  return (
+    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md text-sm font-semibold shadow-sm">
+      {btnTitle}
+    </button>
+  );
 }
 
 export default Button;
