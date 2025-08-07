@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router";
+import { Mail, Phone, Clock, Facebook, Instagram, Twitter } from "lucide-react";
 
 function Footer() {
   return (
@@ -18,24 +20,24 @@ function Footer() {
           </h4>
           <ul className="space-y-2 text-sm text-gray-300">
             <li>
-              <a href="/menu" className="hover:text-white">
+              <Link to="/menu" className="hover:text-white">
                 Menu
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/about" className="hover:text-white">
+              <Link to="/about" className="hover:text-white">
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/contact" className="hover:text-white">
+              <Link to="/contact" className="hover:text-white">
                 Contact
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/review" className="hover:text-white">
+              <Link to="/review" className="hover:text-white">
                 Reviews
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -43,14 +45,27 @@ function Footer() {
         <div>
           <h4 className="text-lg font-semibold mb-3 text-red-400">Contact</h4>
           <ul className="text-sm text-gray-300 space-y-2">
-            <li>Email: support@swad.com</li>
-            <li>Phone: +91 98765 43210</li>
-            <li>Hours: 11am – 10pm (Mon–Sun)</li>
+            <li
+              className="flex gap-2 items-center
+            "
+            >
+              <Mail size={18} />
+              <a href="mailto:ravikanttarare200@gmail.com">
+                ravikanttarare200@gmail.com
+              </a>
+            </li>
+            <li className="flex gap-2">
+              <Phone size={18} />
+              <a href="tel:8275957698"> +91-8275957698</a>{" "}
+            </li>
+            <li className="flex gap-2">
+              <Clock size={18} /> 11am – 10pm (Mon–Sun)
+            </li>
           </ul>
         </div>
 
         <div>
-          <h4 className="text-lg font-semibold mb-3 text-yellow-300">
+          <h4 className="text-lg font-semibold mb-3 text-yellow-300 pl-1">
             Follow Us
           </h4>
           <div className="flex flex-wrap space-x-4">
@@ -58,25 +73,25 @@ function Footer() {
               href=" https://www.facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-green-400"
+              className="hover:text-red-300 hover:scale-115 duration-300"
             >
-              Facebook
+              <Facebook />
             </a>
             <a
               href="https://www.instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-red-400"
+              className="hover:text-red-300 hover:scale-115 duration-300"
             >
-              Instagram
+              <Instagram />
             </a>
             <a
               href="https://x.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-yellow-300"
+              className="hover:text-red-300 hover:scale-115 duration-300"
             >
-              Twitter
+              <Twitter />
             </a>
           </div>
         </div>

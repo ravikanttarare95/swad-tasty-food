@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./../components/Navbar.jsx";
 import { REVIEWS_DATA } from "./../configs/Reviews.js";
 import ReviewCard from "./../components/cards/ReviewCard.jsx";
+import Footer from "./../components/Footer.jsx";
 
 function Reviews() {
   return (
@@ -23,6 +24,7 @@ function Reviews() {
           );
         })}
       </div>
+      <Footer />
     </>
   );
 }

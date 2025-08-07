@@ -5,11 +5,7 @@ function ReviewCard({ name, id, image, date, rating, reviewText }) {
   return (
     <div className="w-full md:w-100 p-6 rounded-xl shadow-md bg-gray-50 border border-gray-200 hover:shadow-lg transition-shadow min-h-60">
       <div className="flex items-center space-x-4">
-        <img
-          src={image}
-          alt={name}
-          className="w-14 h-14 rounded-full"
-        />
+        <img src={image} alt={name} className="w-14 h-14 rounded-full" />
         <div>
           <h3 className="text-lg font-semibold text-gray-700">{name}</h3>
           <p className="text-sm text-gray-500">{date}</p>

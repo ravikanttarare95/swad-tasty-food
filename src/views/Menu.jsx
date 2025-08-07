@@ -1,8 +1,8 @@
 import React from "react";
 import MENU_CARDS_DATA from "./../configs/Menu";
-import Button from "./../components/Button";
 import Navbar from "./../components/Navbar";
 import MenuCard from "./../components/cards/MenuCard";
+import Footer from "./../components/Footer";
 
 function Menu() {
   return (
@@ -28,6 +28,7 @@ function Menu() {
           })}
         </div>
       </div>
+      <Footer />
     </>
   );
 }
