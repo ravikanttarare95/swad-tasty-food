@@ -43,7 +43,7 @@ function Navbar({ openNav }) {
             isHidden ? "hidden" : "flex"
           } w-full md:w-[80%] md:flex flex-col items-center gap-3 md:flex-row text-center bg-gray-200 md:bg-transparent rounded pt-3 pb-5 mt-2 md:pt-0 md:pb-0 md:mt-0`}
         >
-          <ul className=" space-y-3 md:space-y-0  md:flex md:ml-auto md:space-x-5">
+          <ul className=" space-y-3 md:space-y-0  md:flex md:ml-auto md:space-x-7">
             {NAV_LINKS.map((navlinks) => {
               const { to, navlink } = navlinks;
               return (
@@ -52,7 +52,7 @@ function Navbar({ openNav }) {
                     to={to}
                     className={`${
                       openNav === to
-                        ? "border rounded-md"
+                        ? "border rounded-md text-green-600"
                         : "border border-transparent"
                     } sm:text-lg font-medium text-gray-700 hover:text-red-500 transition px-2 py-[2px]`}
                     onClick={() => {
