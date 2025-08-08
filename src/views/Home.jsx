@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router";
 import Navbar from "./../components/Navbar";
 import Footer from "./../components/Footer.jsx";
 import Button from "./../components/Button";
@@ -19,20 +19,22 @@ function Home() {
           <img
             src={HeroImg}
             alt="Delicious Indian Cuisine"
-            className="relative w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-center"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-black/40 bg-opacity-10" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold drop-shadow-lg mb-4">
+          <div className="absolute inset-0 flex flex-col items-center justify-end md:justify-center text-center text-white px-4 max-md:pb-3">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold drop-shadow-lg mb-2 md:mb-4">
               Welcome to <span className="text-yellow-300">Swad</span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mb-6 leading-relaxed drop-shadow-md">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mb-4 md:mb-6 md:leading-relaxed drop-shadow-md">
               Experience the authentic taste of India with our delicious,
               home-style meals. Fresh ingredients, traditional recipes, and a
               warm ambiance await you!
             </p>
-            <Button btnTitle="Explore Menu" size="lg" />
+            <Link to="/menu">
+              <Button btnTitle="Explore Menu" size="lg" />
+            </Link>
           </div>
         </div>
       </section>
@@ -151,9 +153,9 @@ function Home() {
           ))}
         </div>
         <div className="flex justify-center mt-8">
-          <a href="/menu">
+          <Link to="/menu">
             <Button btnTitle="View Full Menu" />
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -168,9 +170,9 @@ function Home() {
           ))}
         </div>
         <div className="flex justify-center mt-8">
-          <a href="/review">
+          <Link to="/review">
             <Button btnTitle="Read More Reviews" />
-          </a>
+          </Link>
         </div>
       </section>
 

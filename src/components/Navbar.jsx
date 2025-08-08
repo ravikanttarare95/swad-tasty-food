@@ -19,8 +19,8 @@ function Navbar({ openNav }) {
     <nav
       className={`fixed top-0 left-0 right-0 transition-colors duration-300 text-gray-100 ${
         scrolled
-          ? "bg-gradient-to-b from-gray-950 to-gray-800"
-          : "bg-gradient-to-b from-gray-950 to-gray-950/40"
+          ? "bg-gradient-to-r from-gray-900 to-gray-800"
+          : "bg-gradient-to-b from-gray-900 to-gray-900/40"
       }  z-50`}
     >
       <div className="px-4 py-3 flex flex-col md:flex-row items-center justify-between">
