@@ -14,7 +14,7 @@ function Home() {
       <Navbar openNav="/" />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-green-100 via-white to-yellow-50">
+      <section className="relative">
         <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden shadow-xl">
           <img
             src={HeroImg}

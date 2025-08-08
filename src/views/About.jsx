@@ -10,7 +10,7 @@ function About() {
     <>
       <Navbar openNav="/about" />
 
-      <section className="bg-white min-h-screen px-4 py-16">
+      <section className="bg-white min-h-screen px-4 pb-16 mt-35">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-center text-gray-700 mb-10">
             About <span className="text-green-600">Swad</span>
