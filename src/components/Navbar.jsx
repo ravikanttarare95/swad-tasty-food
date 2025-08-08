@@ -17,7 +17,7 @@ function Navbar({ openNav }) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 transition-colors duration-300 ${
+      className={`fixed top-0 left-0 right-0 transition-colors duration-300 text-gray-100 ${
         scrolled
           ? "bg-gradient-to-b from-gray-950 to-gray-800"
           : "bg-gradient-to-b from-gray-950 to-gray-950/40"
@@ -38,7 +38,9 @@ function Navbar({ openNav }) {
 
           <X
             size={30}
-            className={` ${isHidden ? "hidden" : "block"} md:hidden`}
+            className={` ${
+              isHidden ? "hidden" : "block"
+            } md:hidden cursor-pointer`}
             onClick={() => {
               setIsHidden(!isHidden);
             }}
@@ -46,7 +48,9 @@ function Navbar({ openNav }) {
 
           <Menu
             size={30}
-            className={` ${isHidden ? "block" : "hidden"} md:hidden`}
+            className={` ${
+              isHidden ? "block" : "hidden"
+            } md:hidden cursor-pointer`}
             onClick={() => {
               setIsHidden(!isHidden);
             }}
