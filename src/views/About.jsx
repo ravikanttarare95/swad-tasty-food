@@ -33,7 +33,7 @@ function About() {
                 dining experience that's both heartwarming and delicious.
               </p>
               <p className="text-gray-600 text-lg leading-relaxed">
-                Thank you for choosing Swad — where every bite feels like home.
+                Thank you for choosing Swad - where every bite feels like home.
               </p>
             </div>
           </div>
@@ -44,7 +44,7 @@ function About() {
               Our Story
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed text-center max-w-4xl mx-auto">
-              Swad started as a small family-owned kitchen with one goal — to
+              Swad started as a small family-owned kitchen with one goal - to
               share the love of Indian home-cooked meals with the community.
               What began as weekend tiffins for neighbors has now grown into a
               beloved eatery that continues to uphold its commitment to

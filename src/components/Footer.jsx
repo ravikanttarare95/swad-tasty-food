@@ -4,7 +4,7 @@ import { Mail, Phone, Clock, Facebook, Instagram, Twitter } from "lucide-react";
 
 function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-12 px-4">
+    <footer className="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-12 px-4 z-50">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         <div>
           <h4 className="text-xl font-bold mb-4 text-green-400">Swad</h4>
