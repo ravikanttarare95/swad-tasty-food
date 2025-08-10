@@ -7,6 +7,7 @@ import MENU_CARDS_DATA from "./../configs/Menu";
 import { REVIEWS_DATA } from "./../configs/Reviews";
 import ReviewCard from "./../components/cards/ReviewCard";
 import HeroImg from "./../assets/hero.jpg";
+import { HeadingSecondary } from "./../components/Heading.jsx";
 
 function Home() {
   return (
@@ -42,9 +43,7 @@ function Home() {
       {/* Why Choose Us Section */}
       <section className="bg-white py-16 px-4 md:px-10">
         <div className="max-w-7xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-500 mb-8">
-            Why choose Swad
-          </h2>
+          <HeadingSecondary headingTitle="Why choose Swad" />
           <p className="text-gray-600 text-lg sm:text-xl max-w-2xl mx-auto">
             Discover what makes Swad a special destination for lovers of
             authentic Indian cuisine.
@@ -86,9 +85,7 @@ function Home() {
 
       {/* How to Order Section */}
       <section className="py-16 px-4 bg-white">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-500 mb-12">
-          How to Order
-        </h2>
+        <HeadingSecondary headingTitle="How to Order" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto text-center">
           <div>
             <div className="text-4xl text-green-500 mb-4 border w-fit px-3 rounded mx-auto">
@@ -122,9 +119,8 @@ function Home() {
 
       {/* Menu Preview */}
       <section className="py-16 px-4 bg-gray-50">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-500 mb-8">
-          Our Popular Dishes
-        </h2>
+        <HeadingSecondary headingTitle="Our Popular Dishes" />
+
         <div className="flex flex-wrap justify-center gap-10">
           {MENU_CARDS_DATA.slice(0, 4).map((item) => (
             <div
@@ -155,23 +151,6 @@ function Home() {
         <div className="flex justify-center mt-8">
           <Link to="/menu">
             <Button btnTitle="View Full Menu" />
-          </Link>
-        </div>
-      </section>
-
-      {/* Reviews Preview */}
-      <section className="py-16 px-4 bg-white">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-500 mb-8">
-          What Our Customers Say
-        </h2>
-        <div className="flex flex-wrap justify-center gap-8">
-          {REVIEWS_DATA.slice(0, 3).map((review) => (
-            <ReviewCard key={review.id} {...review} />
-          ))}
-        </div>
-        <div className="flex justify-center mt-8">
-          <Link to="/review">
-            <Button btnTitle="Read More Reviews" />
           </Link>
         </div>
       </section>

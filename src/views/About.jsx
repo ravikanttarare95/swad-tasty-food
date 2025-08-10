@@ -20,7 +20,7 @@ function About() {
               </div>
             }
           />
-
+  
           {/* Image + Intro Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">
             <div>
