@@ -4,6 +4,7 @@ import Footer from "./../components/Footer";
 import AboutCard from "./../components/cards/AboutCard";
 import { ABOUT_CARD_DATA } from "./../configs/About.js";
 import AboutTeam from "./../assets/about/about-team.jpg";
+import Heading from "./../components/Heading.jsx";
 
 function About() {
   return (
@@ -12,9 +13,13 @@ function About() {
 
       <section className="bg-white min-h-screen px-4 pb-16 pt-25 sm:pt-35">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-center text-gray-700 mb-10">
-            About <span className="text-green-600">Swad</span>
-          </h1>
+          <Heading
+            headingTitle={
+              <div className="flex gap-3">
+                About <span className="text-green-600">Swad</span>
+              </div>
+            }
+          />
 
           {/* Image + Intro Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">

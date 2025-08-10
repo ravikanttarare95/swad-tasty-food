@@ -6,6 +6,7 @@ import Footer from "./../components/Footer.jsx";
 import InputComp from "./../components/InputComp.jsx";
 import Button from "./../components/Button.jsx";
 import SpicesImg from "./../assets/review.jpg";
+import Heading from "../components/Heading.jsx";
 
 function Reviews() {
   const [formData, setFormData] = useState({
@@ -37,6 +38,8 @@ function Reviews() {
     <>
       <Navbar openNav="/review" />
       <div className="px-5 mb-5 pt-25 sm:pt-35 gap-8">
+        <Heading headingTitle="What Our Customers say . . ." />
+
         <div className="flex flex-col max-h-125 md:flex-row overflow-scroll scrollbar-hide max-w-300 mx-auto gap-5 mb-20">
           {REVIEWS_DATA.map((review) => {
             const { name, id, image, date, rating, reviewText } = review;
