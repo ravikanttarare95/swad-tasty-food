@@ -15,9 +15,7 @@ function AboutCard({ image, name, role, desc }) {
 
        <p
     className="flex absolute top-0 inset-0 opacity-0 scale-50
-      group-hover:opacity-100 group-hover:scale-100
-      group-focus:opacity-100 group-focus:scale-100
-      group-active:opacity-100 group-active:scale-100
+   
       focus-within:opacity-100 focus-within:scale-100
       transition-all duration-300 items-center justify-center
       bg-gradient-to-b from-green-700/80 via-green-800/90 to-gray-950
