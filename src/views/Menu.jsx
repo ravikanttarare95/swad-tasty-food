@@ -18,6 +18,7 @@ function Menu() {
             return (
               <div key={id}>
                 <MenuCard
+                  id={id}
                   image={image}
                   title={title}
                   shortDescription={shortDescription}

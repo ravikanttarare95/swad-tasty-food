@@ -2,12 +2,10 @@ import { Link } from "react-router";
 import Navbar from "./../components/Navbar";
 import Footer from "./../components/Footer.jsx";
 import Button from "./../components/Button";
-import { ButtonSecondary } from "./../components/Button";
 import MENU_CARDS_DATA from "./../configs/Menu";
-import { REVIEWS_DATA } from "./../configs/Reviews";
-import ReviewCard from "./../components/cards/ReviewCard";
 import HeroImg from "./../assets/hero.jpg";
 import { HeadingSecondary } from "./../components/Heading.jsx";
+import MenuCard from "./../components/cards/MenuCard.jsx";
 
 function Home() {
   return (
@@ -33,8 +31,11 @@ function Home() {
               home-style meals. Fresh ingredients, traditional recipes, and a
               warm ambiance await you!
             </p>
-            <Link to="/menu">
-              <Button btnTitle="Explore Menu" size="lg" />
+            <Link
+              to="/menu"
+              className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 sm:px-6 sm:py-3 text-md md:text-lg rounded-lg shadow-md"
+            >
+              Explore Menu
             </Link>
           </div>
         </div>
@@ -122,35 +123,27 @@ function Home() {
         <HeadingSecondary headingTitle="Our Popular Dishes" />
 
         <div className="flex flex-wrap justify-center gap-10">
-          {MENU_CARDS_DATA.slice(0, 4).map((item) => (
-            <div
-              key={item.id}
-              className="bg-white shadow-lg rounded-xl overflow-hidden w-72 transform transition duration-300 hover:scale-105 border border-gray-200"
-            >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="h-44 w-full object-cover"
-                loading="lazy"
-              />
-              <div className="p-4">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 mb-3">{item.shortDescription}</p>
-                <div className="flex justify-between items-center">
-                  <span className="text-lg font-bold text-red-600">
-                    ₹{item.price}
-                  </span>
-                  <Button btnTitle="Order Now" />
-                </div>
+          {MENU_CARDS_DATA.slice(0, 4).map(
+            ({ id, image, title, shortDescription, price, category }) => (
+              <div
+                key={id}
+                className="bg-white shadow-lg rounded-xl overflow-hidden w-72 transform transition duration-300 hover:scale-105 border border-gray-200"
+              >
+                <MenuCard
+                  id={id}
+                  image={image}
+                  title={title}
+                  shortDescription={shortDescription}
+                  price={price}
+                  category={category}
+                />
               </div>
-            </div>
-          ))}
+            )
+          )}
         </div>
         <div className="flex justify-center mt-8">
           <Link to="/menu">
-            <Button btnTitle="View Full Menu" />
+            <Button btnTitle="View Full Menu" btnVariant="secondary" />
           </Link>
         </div>
       </section>
@@ -164,7 +157,7 @@ function Home() {
           Order online or visit us for an unforgettable dining experience!
         </p>
         <a href="/menu">
-          <ButtonSecondary btnTitle="Order Now" />
+          <Button btnTitle="Order Now" btnVariant="secondary" />
         </a>
       </section>
       <Footer />

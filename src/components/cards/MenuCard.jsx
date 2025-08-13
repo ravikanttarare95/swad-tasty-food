@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./../Button";
 
-function MenuCard({ image, title, shortDescription, price }) {
+function MenuCard({ id, image, title, shortDescription, price, category }) {
   return (
     <div className="min-h-91 bg-white shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:scale-105 border border-gray-200">
       <img src={image} alt={title} className="h-48 w-full object-cover" />
@@ -13,6 +13,8 @@ function MenuCard({ image, title, shortDescription, price }) {
           <Button
             className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md text-sm font-semibold shadow-sm"
             btnTitle={"Order Now"}
+            btnVariant="primary"
+            id={id}
           />
         </div>
       </div>

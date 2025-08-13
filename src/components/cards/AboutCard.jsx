@@ -17,7 +17,6 @@ function AboutCard({ image, name, role, desc }) {
     className="flex absolute top-0 inset-0 opacity-0 scale-50
       group-hover:opacity-100 group-hover:scale-100
       group-focus:opacity-100 group-focus:scale-100
-
       transition-all duration-300 items-center justify-center
       bg-gradient-to-b from-green-700/80 via-green-800/90 to-gray-950
       backdrop-blur-[3px] mx-auto px-5 text-white text-md leading-relaxed rounded-2xl"
