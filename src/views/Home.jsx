@@ -33,9 +33,9 @@ function Home() {
             </p>
             <Link
               to="/menu"
-              className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 sm:px-6 sm:py-3 text-md md:text-lg rounded-lg shadow-md"
+              // className="bg-green-500 hover:bg-green-600 font-bold text-white px-4 py-2 sm:px-6 sm:py-3 text-md sm:text-lg md:text-xl rounded-lg shadow-md"
             >
-              Explore Menu
+              <Button btnTitle={"Explore Menu"} btnVariant={"primary"} size={"lg"}/>
             </Link>
           </div>
         </div>
@@ -156,9 +156,9 @@ function Home() {
         <p className="text-lg mb-8">
           Order online or visit us for an unforgettable dining experience!
         </p>
-        <a href="/menu">
-          <Button btnTitle="Order Now" btnVariant="secondary" />
-        </a>
+        <Link to="/menu">
+          <Button btnTitle="Order Now" btnVariant="secondary" size={"lg"} />
+        </Link>
       </section>
       <Footer />
     </div>

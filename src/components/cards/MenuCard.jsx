@@ -14,6 +14,7 @@ function MenuCard({ id, image, title, shortDescription, price, category }) {
             className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md text-sm font-semibold shadow-sm"
             btnTitle={"Order Now"}
             btnVariant="primary"
+            size={"md"}
             id={id}
           />
         </div>
