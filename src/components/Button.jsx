@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router";
+// import { Link } from "react-router";
 
-function Button({ btnTitle, size, id, btnVariant , linkTo}) {
+function Button({ btnTitle, size, id, btnVariant, onBtnClick, linkTo }) {
   return (
     <button
       className={`${
@@ -16,11 +16,13 @@ function Button({ btnTitle, size, id, btnVariant , linkTo}) {
        btnVariant === "primary"
          ? "bg-green-500 hover:bg-green-600 text-white"
          : btnVariant === "secondary"
-         ? "bg-yellow-300 hover:bg-yellow-300 text-gray-800"
+         ? "bg-yellow-300 hover:scale-103 active:scale-100 duration-300 text-gray-800"
          : "bg-gray-200"
      }    font-semibold  cursor-pointer`}
+      onClick={onBtnClick}
     >
-      <Link to={`/menu-details?id=${id}`}>{btnTitle}</Link>
+      {/* <Link to={`/menu-details?id=${id}`}></Link> */}
+      {btnTitle}
     </button>
   );
 }
