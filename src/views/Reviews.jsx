@@ -43,30 +43,24 @@ function Reviews() {
           reviewFormStatus ? "flex" : "hidden"
         } fixed inset-0 items-center justify-center bg-black/40 backdrop-blur-sm z-[100]`}
       >
-        {/* Form Container */}
         <div className="relative w-[95%] max-w-[700px] rounded-xl overflow-hidden shadow-2xl border border-white/20">
-          {/* Background Image */}
           <img
             src={SpicesImg}
             alt="Background"
             className="absolute inset-0 w-full h-full object-cover opacity-70"
           />
 
-          {/* Content Overlay */}
           <div className="relative z-10 bg-gradient-to-r from-black/70 via-black/40 to-transparent p-6 sm:p-8 rounded-xl">
-            {/* Close Button */}
             <X
               size={32}
               className="absolute top-4 right-4 text-white cursor-pointer hover:scale-125 transition-transform"
               onClick={() => setReviewFormStatus(false)}
             />
 
-            {/* Title */}
             <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-white border-b border-white/30 pb-2">
               Submit Your Review
             </h2>
 
-            {/* Form */}
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <InputComp
                 type="text"
@@ -83,7 +77,6 @@ function Reviews() {
                 placeholder="Image URL"
               />
 
-              {/* Rating Dropdown */}
               <select
                 name="rating"
                 value={formData.rating}
@@ -101,7 +94,6 @@ function Reviews() {
                 ))}
               </select>
 
-              {/* Review Text */}
               <textarea
                 name="reviewText"
                 value={formData.reviewText}
@@ -112,7 +104,6 @@ function Reviews() {
                 className="bg-white/10 text-white placeholder-white/70 border border-white/30 rounded-lg px-3 py-2 resize-none outline-none focus:border-yellow-400"
               />
 
-              {/* Submit Button */}
               <Button
                 type="submit"
                 btnVariant={"secondary"}
@@ -126,22 +117,29 @@ function Reviews() {
       <Navbar openNav="/review" />
       <div className="px-5 mb-5 pt-25 sm:pt-35 gap-8">
         <Heading headingTitle="What Our Customers say . . ." />
+        <div className="relative max-w-300 mx-auto mb-20">
+          <div className="flex flex-col max-h-125 md:flex-row overflow-scroll scrollbar-hide gap-5 px-5">
+            {REVIEWS_DATA.map((review) => {
+              const { name, id, image, date, rating, reviewText } = review;
+              return (
+                <div key={id}>
+                  <ReviewCard
+                    name={name}
+                    image={image}
+                    date={date}
+                    rating={rating}
+                    reviewText={reviewText}
+                  />
+                </div>
+              );
+            })}
+          </div>
 
-        <div className="flex flex-col max-h-125 md:flex-row overflow-scroll scrollbar-hide max-w-300 mx-auto gap-5 mb-20 ">
-          {REVIEWS_DATA.map((review) => {
-            const { name, id, image, date, rating, reviewText } = review;
-            return (
-              <div key={id}>
-                <ReviewCard
-                  name={name}
-                  image={image}
-                  date={date}
-                  rating={rating}
-                  reviewText={reviewText}
-                />
-              </div>
-            );
-          })}
+          {/* Left shadow */}
+          <div className="pointer-events-none absolute top-0 left-0 h-full w-10 bg-gradient-to-r from-white to-transparent"></div>
+
+          {/* Right shadow */}
+          <div className="pointer-events-none absolute top-0 right-0 h-full w-10 bg-gradient-to-l from-white to-transparent"></div>
         </div>
 
         <div className="flex justify-center md:justify-end gap-4 mb-10 max-w-300 mx-auto">
