@@ -1,12 +1,14 @@
 import RavikantImg from "./../assets/about/my-photo.jpeg";
+import Samu from "./../assets/about/samu.png";
+import Duhi from "./../assets/about/duhi.png";
 
 const ABOUT_CARD_DATA = [
   {
     id: 1,
-    image: "https://images.pexels.com/photos/3769991/pexels-photo-3769991.jpeg",
-    name: "Asha Sharma",
+    image: Samu,
+    name: "Samu Tarare",
     role: "Head Chef",
-    desc: "Asha brings 15+ years of culinary expertise and a deep love for traditional Indian cooking.",
+    desc: "Samu brings 15+ years of culinary expertise and a deep love for traditional Indian cooking.",
   },
 
   {
@@ -19,10 +21,10 @@ const ABOUT_CARD_DATA = [
 
   {
     id: 3,
-    image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
-    name: "Priya Iyer",
-    role: "Sous Chef",
-    desc: " Priya’s creativity and precision bring the perfect balance to our dishes.",
+    image: Duhi,
+    name: "Duhita Tarare",
+    role: "Duhita Chef",
+    desc: " Duhita’s creativity and precision bring the perfect balance to our dishes.",
   },
 ];
 export { ABOUT_CARD_DATA };
