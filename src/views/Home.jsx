@@ -12,7 +12,6 @@ function Home() {
     <div className="bg-white min-h-screen">
       <Navbar openNav="/" />
 
-      {/* Hero Section */}
       <section className="relative">
         <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden shadow-xl">
           <img
@@ -31,17 +30,17 @@ function Home() {
               home-style meals. Fresh ingredients, traditional recipes, and a
               warm ambiance await you!
             </p>
-            <Link
-              to="/menu"
-              // className="bg-green-500 hover:bg-green-600 font-bold text-white px-4 py-2 sm:px-6 sm:py-3 text-md sm:text-lg md:text-xl rounded-lg shadow-md"
-            >
-              <Button btnTitle={"Explore Menu"} btnVariant={"primary"} size={"lg"}/>
-            </Link>
+
+            <Button
+              linkTo="/menu"
+              btnTitle={"Explore Menu"}
+              btnVariant={"primary"}
+              size={"lg"}
+            />
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
       <section className="bg-white py-16 px-4 md:px-10">
         <div className="max-w-7xl mx-auto text-center mb-12">
           <HeadingSecondary headingTitle="Why choose Swad" />
@@ -84,7 +83,6 @@ function Home() {
         </div>
       </section>
 
-      {/* How to Order Section */}
       <section className="py-16 px-4 bg-white">
         <HeadingSecondary headingTitle="How to Order" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto text-center">
@@ -118,7 +116,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Menu Preview */}
       <section className="py-16 px-4 bg-gray-50">
         <HeadingSecondary headingTitle="Our Popular Dishes" />
 
@@ -142,13 +139,14 @@ function Home() {
           )}
         </div>
         <div className="flex justify-center mt-8">
-          <Link to="/menu">
-            <Button btnTitle="View Full Menu" btnVariant="secondary" />
-          </Link>
+          <Button
+            linkTo="/menu"
+            btnTitle="View Full Menu"
+            btnVariant="secondary"
+          />
         </div>
       </section>
 
-      {/* Call to Action */}
       <section className="py-16 px-4 bg-gradient-to-r from-green-400 to-green-600 text-white text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Ready to Taste the Best?
@@ -156,9 +154,13 @@ function Home() {
         <p className="text-lg mb-8">
           Order online or visit us for an unforgettable dining experience!
         </p>
-        <Link to="/menu">
-          <Button btnTitle="Order Now" btnVariant="secondary" size={"lg"} />
-        </Link>
+
+        <Button
+          linkTo="/cart"
+          btnTitle="Order Now"
+          btnVariant="secondary"
+          size={"lg"}
+        />
       </section>
       <Footer />
     </div>

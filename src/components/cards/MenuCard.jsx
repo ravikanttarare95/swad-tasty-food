@@ -11,11 +11,10 @@ function MenuCard({ id, image, title, shortDescription, price, category }) {
         <div className="flex justify-between items-center">
           <span className="text-lg font-bold text-red-600">₹{price}</span>
           <Button
-            className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md text-sm font-semibold shadow-sm"
+            linkTo={`/menu-details?id=${id}`}
             btnTitle={"Order Now"}
             btnVariant="primary"
             size={"md"}
-            id={id}
           />
         </div>
       </div>

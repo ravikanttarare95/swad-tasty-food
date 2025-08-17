@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router";
 
-function Button({ btnTitle, size, id, btnVariant, onBtnClick, linkTo }) {
+function Button({ btnTitle, size, btnVariant, onBtnClick, linkTo }) {
   return (
     <button
       className={`
@@ -23,13 +24,9 @@ function Button({ btnTitle, size, id, btnVariant, onBtnClick, linkTo }) {
       `}
       onClick={onBtnClick}
     >
-      {btnTitle}
+      {linkTo ? <Link to={linkTo}> {btnTitle}</Link> : { btnTitle }}
     </button>
   );
 }
 
 export default Button;
-
-{
-  /* <Link to={`/menu-details?id=${id}`}></Link> */
-}
