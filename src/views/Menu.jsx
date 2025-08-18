@@ -14,7 +14,8 @@ function Menu() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-270 mx-auto">
           {MENU_CARDS_DATA.map((item) => {
-            const { id, image, title, shortDescription, price } = item;
+            const { id, image, title, shortDescription, price, category } =
+              item;
             return (
               <div key={id}>
                 <MenuCard
@@ -23,6 +24,7 @@ function Menu() {
                   title={title}
                   shortDescription={shortDescription}
                   price={price}
+                  category={category}
                 />
               </div>
             );

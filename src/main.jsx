@@ -3,6 +3,7 @@ import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "./views/Home";
 import Menu from "./views/Menu";
+import MenuDetails from "./views/MenuDetails";
 import About from "./views/About";
 import Review from "./views/Reviews";
 import Cart from "./views/Cart";
@@ -14,6 +15,7 @@ root.render(
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/menu" element={<Menu />} />
+      <Route path="/menu-details" element={<MenuDetails />} />
       <Route path="/about" element={<About />} />
       <Route path="/review" element={<Review />} />
       <Route path="/cart" element={<Cart />} />

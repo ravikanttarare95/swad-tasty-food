@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router";
 
-function Button({ btnTitle, size, btnVariant, onBtnClick, linkTo }) {
+function Button({
+  btnTitle,
+  size,
+  btnVariant,
+  onBtnClick,
+  linkTo,
+  customStyle,
+}) {
   return (
     <button
       className={`
@@ -21,10 +28,11 @@ function Button({ btnTitle, size, btnVariant, onBtnClick, linkTo }) {
             : "bg-gray-200"
         }
         font-semibold cursor-pointer
+        ${customStyle}
       `}
       onClick={onBtnClick}
     >
-      {linkTo ? <Link to={linkTo}> {btnTitle}</Link> : { btnTitle }}
+      {linkTo ? <Link to={linkTo}> {btnTitle}</Link> : btnTitle}
     </button>
   );
 }

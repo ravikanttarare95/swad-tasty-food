@@ -6,7 +6,7 @@ import Footer from "./../components/Footer.jsx";
 import InputComp from "./../components/InputComp.jsx";
 import Button from "./../components/Button.jsx";
 import SpicesImg from "./../assets/review.jpg";
-import Heading from "../components/Heading.jsx";
+import Heading from "./../components/Heading.jsx";
 import { X } from "lucide-react";
 
 function Reviews() {
@@ -34,6 +34,7 @@ function Reviews() {
       rating: "",
       reviewText: "",
     });
+    setReviewFormStatus(false);
   };
 
   return (
@@ -106,7 +107,7 @@ function Reviews() {
 
               <Button
                 type="submit"
-                btnVariant={"secondary"}
+                btnVariant="secondary"
                 btnTitle="Submit Review"
               />
             </form>

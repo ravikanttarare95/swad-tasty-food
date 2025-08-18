@@ -23,7 +23,7 @@ const ABOUT_CARD_DATA = [
     id: 3,
     image: Duhi,
     name: "Duhita Tarare",
-    role: "Duhita Chef",
+    role: "Chef",
     desc: " Duhita’s creativity and precision bring the perfect balance to our dishes.",
   },
 ];
