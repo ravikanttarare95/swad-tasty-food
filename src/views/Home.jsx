@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Navbar from "./../components/Navbar";
 import Footer from "./../components/Footer.jsx";
 import Button from "./../components/Button";
@@ -8,6 +8,10 @@ import { HeadingSecondary } from "./../components/Heading.jsx";
 import MenuCard from "./../components/cards/MenuCard.jsx";
 
 function Home() {
+  const navigate = useNavigate();
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
   return (
     <div className="bg-white min-h-screen">
       <Navbar openNav="/" />
@@ -32,7 +36,9 @@ function Home() {
             </p>
 
             <Button
-              linkTo="/menu"
+              onBtnClick={() => {
+                handleNavigation("/menu");
+              }}
               btnTitle={"Explore Menu"}
               btnVariant={"primary"}
               size={"lg"}
@@ -124,7 +130,7 @@ function Home() {
             ({ id, image, title, shortDescription, price, category }) => (
               <div
                 key={id}
-                className="bg-white shadow-lg rounded-xl overflow-hidden w-72 transform transition duration-300 hover:scale-105 border border-gray-200"
+                className="bg-white rounded-xl overflow-hidden w-72 transform transition duration-300 hover:scale-105 border border-gray-200"
               >
                 <MenuCard
                   id={id}
@@ -140,7 +146,9 @@ function Home() {
         </div>
         <div className="flex justify-center mt-8">
           <Button
-            linkTo="/menu"
+            onBtnClick={() => {
+              handleNavigation("/menu");
+            }}
             btnTitle="View Full Menu"
             btnVariant="secondary"
           />
@@ -156,7 +164,9 @@ function Home() {
         </p>
 
         <Button
-          linkTo="/cart"
+          onBtnClick={() => {
+            handleNavigation("/cart");
+          }}
           btnTitle="Order Now"
           btnVariant="secondary"
           size={"lg"}

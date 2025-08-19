@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import logo from "./../../public/logo.png";
 import { NAV_LINKS } from "./../configs/Navbar";
 import { Link } from "react-router";
-import { ShoppingBag, Menu, X } from "lucide-react";
+import { ShoppingBag, LogIn, Menu, X } from "lucide-react";
+import Button from "./Button";
 
 function Navbar({ openNav }) {
   const [isHidden, setIsHidden] = useState(true);
@@ -87,19 +88,27 @@ function Navbar({ openNav }) {
 
           {/* Cart and Sign In */}
           <div className="space-y-5 md:space-y-0 flex flex-col md:flex-row md:space-x-5 items-center md:ml-auto">
-            <Link
-              to="/cart"
-              className="flex items-center space-x-1 text-yellow-400 hover:text-red-600 font-medium transition"
-            >
-              <span>Cart</span>
-              <ShoppingBag className="w-5 h-5" />
-            </Link>
-            <Link
-              to="/sign_in"
-              className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition"
-            >
-              Sign In
-            </Link>
+            <Button
+              linkTo="/cart"
+              btnVariant="secondary"
+              btnTitle={
+                <div className="flex items-center gap-1">
+                  Cart <ShoppingBag className="w-5 h-5" />
+                </div>
+              }
+              size="sm"
+            />
+
+            <Button
+              linkTo="/sign_in"
+              btnVariant="primary"
+              btnTitle={
+                <div className="flex items-center gap-1">
+                  Sign In <LogIn className="w-5 h-5" />
+                </div>
+              }
+              size="sm"
+            />
           </div>
         </div>
       </div>

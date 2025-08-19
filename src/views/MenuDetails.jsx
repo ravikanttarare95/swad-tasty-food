@@ -1,5 +1,5 @@
 import React from "react";
-import { useSearchParams, Link } from "react-router";
+import { useSearchParams, Link, useNavigate } from "react-router";
 import MENU_CARDS_DATA from "./../configs/Menu";
 import Navbar from "./../components/Navbar";
 import Footer from "./../components/Footer";
@@ -10,6 +10,10 @@ function MenuDetails() {
   const [searchParams] = useSearchParams();
   const menuId = searchParams.get("id");
   const menu = MENU_CARDS_DATA.find(({ id }) => id === menuId);
+  const navigate = useNavigate();
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
 
   return (
     <>
@@ -20,7 +24,9 @@ function MenuDetails() {
             btnTitle="← Back to Menu"
             btnVariant="secondary"
             size="sm"
-            linkTo="/menu"
+            onBtnClick={() => {
+              handleNavigation("/menu");
+            }}
           />
           {menu ? (
             <div className="bg-white rounded-2xl shadow-xl border border-gray-200 mt-6 p-6 md:p-10 flex flex-col gap-8">
@@ -68,9 +74,7 @@ function MenuDetails() {
                 </h3>
                 <ul className="space-y-2 bg-green-50/60 rounded-lg p-4 border border-green-100 text-gray-700">
                   {Array.isArray(menu.recipe) ? (
-                    menu.recipe.map((step, idx) => (
-                      <li key={idx}>{step}</li>
-                    ))
+                    menu.recipe.map((step, idx) => <li key={idx}>{step}</li>)
                   ) : (
                     <li>{menu.recipe}</li>
                   )}
