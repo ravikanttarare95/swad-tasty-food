@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import logo from "./../../public/logo.png";
 import { NAV_LINKS } from "./../configs/Navbar";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { ShoppingBag, LogIn, Menu, X } from "lucide-react";
 import Button from "./Button";
 
 function Navbar({ openNav }) {
+  const navigate = useNavigate();
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
   const [isHidden, setIsHidden] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -89,7 +93,6 @@ function Navbar({ openNav }) {
           {/* Cart and Sign In */}
           <div className="space-y-5 md:space-y-0 flex flex-col md:flex-row md:space-x-5 items-center md:ml-auto">
             <Button
-              linkTo="/cart"
               btnVariant="secondary"
               btnTitle={
                 <div className="flex items-center gap-1">
@@ -97,10 +100,12 @@ function Navbar({ openNav }) {
                 </div>
               }
               size="sm"
+              onBtnClick={() => {
+                handleNavigation("/cart");
+              }}
             />
 
             <Button
-              linkTo="/sign_in"
               btnVariant="primary"
               btnTitle={
                 <div className="flex items-center gap-1">
@@ -108,6 +113,9 @@ function Navbar({ openNav }) {
                 </div>
               }
               size="sm"
+              onBtnClick={() => {
+                handleNavigation("sign_in");
+              }}
             />
           </div>
         </div>
