@@ -36,6 +36,8 @@ function MenuCard({ id, image, title, shortDescription, price, category }) {
         addedCart.splice(itemIndex, 1);
         setIsAdded(false);
         setQuantity(1);
+      } else {
+        setQuantity(addedCart[itemIndex].quantity);
       }
     }
     updateCart(addedCart);
@@ -49,6 +51,7 @@ function MenuCard({ id, image, title, shortDescription, price, category }) {
     const itemIndex = addedCart.findIndex((item) => item.id === id);
     if (itemIndex > -1) {
       addedCart[itemIndex].quantity += 1;
+      setQuantity(addedCart[itemIndex].quantity);
     }
     updateCart(addedCart);
   };
