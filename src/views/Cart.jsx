@@ -1,19 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./../components/Navbar";
+import { SquareDot, SquarePlus, SquareMinus } from "lucide-react";
+import {
+  updateCart,
+  handleQuantityMinus,
+  handleQuantityPlus,
+} from "./../utils/CartUtils";
 
 function Cart() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const [addedCart, setAddedCart] = useState(() => {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+  });
 
+  const QuantityMinus = (id) => {
+    const updatedCart = handleQuantityMinus(id);
+    setAddedCart(updatedCart);
+  };
+
+  const QuantityPlus = (id) => {
+    const updatedCart = handleQuantityPlus(id);
+    setAddedCart(updatedCart);
+  };
   return (
     <>
       <Navbar />
       <div className="p-6">
         <h1 className="text-2xl font-bold my-15">Your Cart</h1>
-        {cart.length === 0 ? (
+        {addedCart.length === 0 ? (
           <p className="text-gray-600">Your cart is empty.</p>
         ) : (
           <div className="space-y-4">
-            {cart.map((item) => (
+            {addedCart.map((item) => (
               <div
                 key={item.id}
                 className="flex justify-between items-center border p-4 rounded-lg shadow-sm bg-white"
@@ -26,6 +43,21 @@ function Cart() {
                     <div>
                       <h2 className="font-semibold text-lg">{item.title}</h2>
                       <p className="text-red-600 font-bold">₹{item.price}</p>
+                    </div>
+                    <div className="absolute text-green-500 bg-green-50 rounded">
+                      <SquareMinus
+                        onClick={() => {
+                          QuantityMinus(item.id);
+                        }}
+                        className="cursor-pointer"
+                      />
+                      {item.quantity}
+                      <SquarePlus
+                        onClick={() => {
+                          QuantityPlus(item.id);
+                        }}
+                        className="cursor-pointer"
+                      />
                     </div>
                   </div>
                 </div>

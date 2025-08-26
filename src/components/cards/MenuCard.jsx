@@ -3,57 +3,40 @@ import React, { useState, useEffect } from "react";
 import Button from "./../Button";
 import { SquareDot, SquarePlus, SquareMinus } from "lucide-react";
 import { Link } from "react-router";
+import {
+  updateCart,
+  handleQuantityMinus,
+  handleQuantityPlus,
+} from "./../../utils/CartUtils";
 
 function MenuCard({ id, image, title, shortDescription, price, category }) {
+  const [addedCart, setAddedCart] = useState(() => {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+  });
   const [isAdded, setIsAdded] = useState(false);
-  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
-    const addedCart = JSON.parse(localStorage.getItem("cart")) || [];
     const itemIndex = addedCart.findIndex((item) => item.id === id);
 
     if (itemIndex > -1) {
       setIsAdded(true);
-      setQuantity(addedCart[itemIndex].quantity);
+    } else {
+      setIsAdded(false);
     }
+    // OR setIsAdded(itemIndex > -1)
+
     console.log("S", itemIndex); ////////////
-  }, [id]);
+  }, [id, addedCart]);
 
-  const updateCart = (updatedCart) => {
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  const QuantityMinus = (e) => {
+    e.preventDefault();
+    const updatedCart = handleQuantityMinus(id);
+    setAddedCart(updatedCart);
   };
-
-  const handleQuantityMinus = (e) => {
-    e.preventDefault(); // all card is wrapped inside the Link tag. So, it prevents unnecessary navigation whenever we click anywhere inside the card
-
-    const addedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    const itemIndex = addedCart.findIndex((item) => item.id === id);
-
-    if (itemIndex > -1) {
-      addedCart[itemIndex].quantity -= 1;
-
-      if (addedCart[itemIndex].quantity <= 0) {
-        addedCart.splice(itemIndex, 1);
-        setIsAdded(false);
-        setQuantity(1);
-      } else {
-        setQuantity(addedCart[itemIndex].quantity);
-      }
-    }
-    updateCart(addedCart);
-  };
-
-  const handleQuantityPlus = (e) => {
-    e.preventDefault(); // all card is wrapped inside the Link tag. So, it prevents unnecessary navigation whenever we click anywhere inside the card
-
-    const addedCart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    const itemIndex = addedCart.findIndex((item) => item.id === id);
-    if (itemIndex > -1) {
-      addedCart[itemIndex].quantity += 1;
-      setQuantity(addedCart[itemIndex].quantity);
-    }
-    updateCart(addedCart);
+  const QuantityPlus = (e) => {
+    e.preventDefault();
+    const updatedCart = handleQuantityPlus(id);
+    setAddedCart(updatedCart);
   };
 
   const handleAddToCart = (e) => {
@@ -63,19 +46,21 @@ function MenuCard({ id, image, title, shortDescription, price, category }) {
 
     const itemIndex = addedCart.findIndex((item) => item.id === id);
     {
-      addedCart.push({
-        id,
-        image,
-        title,
-        shortDescription,
-        price,
-        category,
-        quantity: 1,
-      });
+      if (itemIndex === -1) {
+        addedCart.push({
+          id,
+          image,
+          title,
+          shortDescription,
+          price,
+          category,
+          quantity: 1,
+        });
+      }
     }
-
-    localStorage.setItem("cart", JSON.stringify(addedCart));
+    updateCart(addedCart);
     setIsAdded(true);
+    setAddedCart(addedCart);
   };
 
   return (
@@ -90,9 +75,9 @@ function MenuCard({ id, image, title, shortDescription, price, category }) {
         </div>
         {isAdded && (
           <div className="absolute text-green-500 bg-green-50 rounded">
-            <SquareMinus onClick={handleQuantityMinus} />
-            {quantity}
-            <SquarePlus onClick={handleQuantityPlus} />
+            <SquareMinus onClick={QuantityMinus} />
+            {addedCart.find((item) => item.id === id)?.quantity}
+            <SquarePlus onClick={QuantityPlus} />
           </div>
         )}
         <img src={image} alt={title} className="h-48 w-full object-cover" />
