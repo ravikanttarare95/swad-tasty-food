@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router";
 
-function Button({ btnTitle, size, btnVariant, onBtnClick, customStyle }) {
+function Button({
+  btnTitle,
+  size,
+  btnVariant,
+  onBtnClick,
+  customStyle,
+  disabled,
+}) {
   return (
     <button
       className={`
@@ -15,15 +22,16 @@ function Button({ btnTitle, size, btnVariant, onBtnClick, customStyle }) {
         
         ${
           btnVariant === "primary"
-            ? "bg-gradient-to-r from-green-500 to-green-600 hover:bg-green-600 text-white"
+            ? "bg-gradient-to-r from-green-500 to-green-600 hover:bg-green-600 text-white cursor-pointer"
             : btnVariant === "secondary"
-            ? "bg-gradient-to-r from-yellow-300 to-yellow-400 hover:scale-103 active:scale-100 duration-300 text-yellow-900"
-            : "bg-gray-200"
+            ? "bg-gradient-to-r from-yellow-300 to-yellow-400 hover:scale-103 active:scale-100 duration-300 text-yellow-900 cursor-pointer"
+            : "bg-gray-200 cursor-not-allowed"
         }
-        font-semibold cursor-pointer
+        font-semibold 
         ${customStyle}
       `}
       onClick={onBtnClick}
+      disabled={disabled}
     >
       {btnTitle}
     </button>

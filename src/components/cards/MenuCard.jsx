@@ -1,18 +1,66 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import Button from "./../Button";
-import { SquareDot } from "lucide-react";
+import { SquareDot, SquarePlus, SquareMinus } from "lucide-react";
 import { Link } from "react-router";
 
 function MenuCard({ id, image, title, shortDescription, price, category }) {
+  const [isAdded, setIsAdded] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    const addedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const itemIndex = addedCart.findIndex((item) => item.id === id);
+
+    if (itemIndex > -1) {
+      setIsAdded(true);
+      setQuantity(addedCart[itemIndex].quantity);
+    }
+    console.log("S", itemIndex); ////////////
+  }, [id]);
+
+  const updateCart = (updatedCart) => {
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const handleQuantityMinus = (e) => {
+    e.preventDefault(); // all card is wrapped inside the Link tag. So, it prevents unnecessary navigation whenever we click anywhere inside the card
+
+    const addedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const itemIndex = addedCart.findIndex((item) => item.id === id);
+
+    if (itemIndex > -1) {
+      addedCart[itemIndex].quantity -= 1;
+
+      if (addedCart[itemIndex].quantity <= 0) {
+        addedCart.splice(itemIndex, 1);
+        setIsAdded(false);
+        setQuantity(1);
+      }
+    }
+    updateCart(addedCart);
+  };
+
+  const handleQuantityPlus = (e) => {
+    e.preventDefault(); // all card is wrapped inside the Link tag. So, it prevents unnecessary navigation whenever we click anywhere inside the card
+
+    const addedCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const itemIndex = addedCart.findIndex((item) => item.id === id);
+    if (itemIndex > -1) {
+      addedCart[itemIndex].quantity += 1;
+    }
+    updateCart(addedCart);
+  };
 
   const handleAddToCart = (e) => {
-    e.preventDefault(); 
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    e.preventDefault(); // all card is wrapped inside the Link tag. So, it prevents unnecessary navigation whenever we click anywhere inside the card
 
-    const itemIndex = cart.findIndex((item) => item.id === id);
+    const addedCart = JSON.parse(localStorage.getItem("cart")) || [];
 
+    const itemIndex = addedCart.findIndex((item) => item.id === id);
     {
-      cart.push({
+      addedCart.push({
         id,
         image,
         title,
@@ -23,7 +71,8 @@ function MenuCard({ id, image, title, shortDescription, price, category }) {
       });
     }
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(addedCart));
+    setIsAdded(true);
   };
 
   return (
@@ -36,6 +85,13 @@ function MenuCard({ id, image, title, shortDescription, price, category }) {
             <SquareDot className="text-red-500 bg-red-100 rounded" />
           )}
         </div>
+        {isAdded && (
+          <div className="absolute text-green-500 bg-green-50 rounded">
+            <SquareMinus onClick={handleQuantityMinus} />
+            {quantity}
+            <SquarePlus onClick={handleQuantityPlus} />
+          </div>
+        )}
         <img src={image} alt={title} className="h-48 w-full object-cover" />
         <div className="p-4">
           <h2 className="text-xl font-semibold text-gray-800 mb-2">{title}</h2>
@@ -43,10 +99,11 @@ function MenuCard({ id, image, title, shortDescription, price, category }) {
           <div className="flex justify-between items-center">
             <span className="text-lg font-bold text-red-600">₹{price}</span>
             <Button
-              btnTitle={"Add Item"}
-              btnVariant="primary"
+              btnTitle={isAdded ? "Added" : "Add Item"}
+              btnVariant={isAdded ? "disabled" : "primary"}
               size={"md"}
               onBtnClick={handleAddToCart}
+              disabled={isAdded}
             />
           </div>
         </div>
