@@ -24,7 +24,8 @@ function Home() {
             className="w-full h-full object-cover object-center"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-black/40 bg-opacity-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/60 to-black/50" />
+
           <div className="absolute inset-0 flex flex-col items-center justify-end md:justify-center text-center text-white px-4 max-md:pb-3">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold drop-shadow-lg mb-2 md:mb-4">
               Welcome to <span className="text-yellow-300">Swad</span>
