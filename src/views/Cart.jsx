@@ -40,25 +40,24 @@ function Cart() {
       <Navbar />
       <div className="p-6 mt-15">
         {addedCart.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-16 text-center space-y-4">
+          <div className="flex flex-col items-center justify-center py-16 text-center space-y-6 bg-gradient-to-b from-gray-50 to-gray-100 rounded-2xl shadow-md border border-gray-200 max-w-md mx-auto">
             <img
               src={FoodCartImg}
               alt="Food Cart"
-              className="w-40 opacity-80"
+              className="w-32 opacity-90 drop-shadow-sm"
             />
-            <p className="text-gray-700 text-lg font-medium">
-              Your cart is empty
-            </p>
-            <p className="text-gray-500">
-              Discover flavors & savor something delicious 🍴
+            <h2 className="text-2xl font-semibold text-gray-800">
+              Your cart is empty 🛒
+            </h2>
+            <p className="text-gray-500 text-base max-w-xs">
+              Looks like you haven’t added anything yet. Discover flavors &
+              savor something delicious 🍴
             </p>
             <Button
               btnVariant="primary"
               btnTitle="Explore Menu"
-              size={"md"}
-              onBtnClick={() => {
-                navigate("/menu");
-              }}
+              size="md"
+              onBtnClick={() => navigate("/menu")}
             />
           </div>
         ) : (
@@ -104,16 +103,25 @@ function Cart() {
 
                 {/* Total Section */}
                 <div className="text-right">
-                  <p className="text-gray-700">Qty: {item.quantity}</p>
-                  <p className="text-green-600 font-semibold">
+                  <p className="text-gray-600">Qty: {item.quantity}</p>
+                  <p className="text-gray-600 font-semibold">
                     Total: ₹{item.price * item.quantity}
                   </p>
                 </div>
               </div>
             ))}
-            <p className="text-end border-t-2 border-gray-300 pt-2">
-              To Pay:{}{" "}
-            </p>
+
+            <div className="flex justify-between items-center bg-white border-t-2 border-gray-400 mt-7 px-5 py-3">
+              <span className="text-lg font-medium text-gray-700">To Pay</span>
+              <span className="text-2xl font-bold text-green-600">
+                ₹
+                {addedCart.reduce(
+                  (accumulator, item) =>
+                    accumulator + item.price * item.quantity,
+                  0
+                )}
+              </span>
+            </div>
           </div>
         )}
       </div>

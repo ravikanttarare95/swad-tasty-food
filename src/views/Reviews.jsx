@@ -29,7 +29,7 @@ function Reviews() {
   useEffect(() => {
     const storedReviews = JSON.parse(localStorage.getItem("reviews")) || [];
     setReviews([...storedReviews, ...REVIEWS_DATA]);
-  }, [formData]);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
