@@ -86,10 +86,24 @@ function MenuCard({ id, image, title, shortDescription, price, category }) {
           )}
         </div>
         {isAdded && (
-          <div className="absolute text-green-500 bg-green-50 rounded">
-            <SquareMinus onClick={QuantityMinus} />
-            {addedCart.find((item) => item.id === id)?.quantity}
-            <SquarePlus onClick={QuantityPlus} />
+          <div
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
+                bg-white shadow-lg rounded-full px-4 py-2 flex items-center gap-4 
+                border border-gray-200"
+          >
+            <SquareMinus
+              onClick={QuantityMinus}
+              size={26}
+              className=" text-red-500 cursor-pointer hover:scale-110 transition"
+            />
+            <span className="text-gray-800 font-semibold text-lg">
+              {addedCart.find((item) => item.id === id)?.quantity}
+            </span>
+            <SquarePlus
+              onClick={QuantityPlus}
+              size={26}
+              className="text-green-600 cursor-pointer hover:scale-110 transition"
+            />
           </div>
         )}
         <img src={image} alt={title} className="h-48 w-full object-cover" />
@@ -108,7 +122,7 @@ function MenuCard({ id, image, title, shortDescription, price, category }) {
           </div>
         </div>
       </div>
-      <Toaster position="top-right" />
+      <Toaster />
     </Link>
   );
 }

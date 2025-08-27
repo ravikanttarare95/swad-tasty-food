@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import Navbar from "./../components/Navbar";
 import Footer from "./../components/Footer.jsx";
 import Button from "./../components/Button";
