@@ -6,15 +6,25 @@ import {
   handleQuantityMinus,
   handleQuantityPlus,
 } from "./../utils/CartUtils";
+import toast, { Toaster } from "react-hot-toast";
 
 function Cart() {
   const [addedCart, setAddedCart] = useState(() => {
     return JSON.parse(localStorage.getItem("cart")) || [];
   });
 
-  const QuantityMinus = (id) => {
-    const updatedCart = handleQuantityMinus(id);
-    setAddedCart(updatedCart);
+  const QuantityMinus = (id, title) => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const item = cart.find((item) => item.id === id);
+
+    if (item?.quantity === 1) {
+      const updatedCart = handleQuantityMinus(id);
+      setAddedCart(updatedCart);
+      toast.error(`${title} removed from cart`);
+    } else {
+      const updatedCart = handleQuantityMinus(id);
+      setAddedCart(updatedCart);
+    }
   };
 
   const QuantityPlus = (id) => {
@@ -47,7 +57,7 @@ function Cart() {
                     <div className="absolute text-green-500 bg-green-50 rounded">
                       <SquareMinus
                         onClick={() => {
-                          QuantityMinus(item.id);
+                          QuantityMinus(item.id, item.title);
                         }}
                         className="cursor-pointer"
                       />
@@ -73,6 +83,7 @@ function Cart() {
           </div>
         )}
       </div>
+      <Toaster position="top-right" />
     </>
   );
 }

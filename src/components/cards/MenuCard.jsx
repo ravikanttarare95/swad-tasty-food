@@ -8,6 +8,7 @@ import {
   handleQuantityMinus,
   handleQuantityPlus,
 } from "./../../utils/CartUtils";
+import toast, { Toaster } from "react-hot-toast";
 
 function MenuCard({ id, image, title, shortDescription, price, category }) {
   const [addedCart, setAddedCart] = useState(() => {
@@ -30,9 +31,19 @@ function MenuCard({ id, image, title, shortDescription, price, category }) {
 
   const QuantityMinus = (e) => {
     e.preventDefault();
-    const updatedCart = handleQuantityMinus(id);
-    setAddedCart(updatedCart);
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const item = cart.find((item) => item.id === id);
+
+    if (item?.quantity === 1) {
+      const updatedCart = handleQuantityMinus(id);
+      setAddedCart(updatedCart);
+      toast.error(`${title} removed from cart`);
+    } else {
+      const updatedCart = handleQuantityMinus(id);
+      setAddedCart(updatedCart);
+    }
   };
+
   const QuantityPlus = (e) => {
     e.preventDefault();
     const updatedCart = handleQuantityPlus(id);
@@ -61,6 +72,7 @@ function MenuCard({ id, image, title, shortDescription, price, category }) {
     updateCart(addedCart);
     setIsAdded(true);
     setAddedCart(addedCart);
+    toast.success(`${title} added to cart`);
   };
 
   return (
@@ -96,6 +108,7 @@ function MenuCard({ id, image, title, shortDescription, price, category }) {
           </div>
         </div>
       </div>
+      <Toaster position="top-right" />
     </Link>
   );
 }
