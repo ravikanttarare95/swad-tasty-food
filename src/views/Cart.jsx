@@ -63,7 +63,7 @@ function Cart() {
           </div>
         ) : (
           <div className="space-y-4">
-            <h1 className="text-2xl font-bold mt-18 mb-6">Your Cart</h1>
+            <h1 className="text-2xl font-bold mb-6">Your Cart</h1>
             {addedCart.map((item) => (
               <div
                 key={item.id}

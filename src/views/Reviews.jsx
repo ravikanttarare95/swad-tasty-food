@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./../components/Navbar.jsx";
 import { REVIEWS_DATA } from "./../configs/Reviews.js";
 import ReviewCard from "./../components/cards/ReviewCard.jsx";
@@ -8,6 +8,7 @@ import Button from "./../components/Button.jsx";
 import SpicesImg from "./../assets/review.jpg";
 import Heading from "./../components/Heading.jsx";
 import { X } from "lucide-react";
+import toast, { Toaster } from "react-hot-toast";
 
 function Reviews() {
   const [reviewFormStatus, setReviewFormStatus] = useState(false);
@@ -18,6 +19,12 @@ function Reviews() {
     rating: "",
     reviewText: "",
   });
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    const storedReviews = JSON.parse(localStorage.getItem("reviews")) || [];
+    setReviews([...storedReviews, ...REVIEWS_DATA]);
+  }, [formData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,7 +33,17 @@ function Reviews() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Review submitted! (Add your submission logic)");
+    const storedReviews = JSON.parse(localStorage.getItem("reviews")) || [];
+    console.log(storedReviews);
+    const newReview = {
+      ...formData,
+      date: new Date().toISOString().slice(0, 10),
+    };
+
+    const updatedReviews = [newReview, ...storedReviews];
+
+    localStorage.setItem("reviews", JSON.stringify(updatedReviews));
+    toast.success(`Your Review submitted!(Add your submission logic)`);
     setFormData({
       name: "",
       image: "",
@@ -120,7 +137,7 @@ function Reviews() {
         <Heading headingTitle="What Our Customers say . . ." />
         <div className="relative max-w-300 mx-auto mb-20">
           <div className="flex flex-col max-h-125 md:flex-row overflow-scroll scrollbar-hide gap-5 px-5">
-            {REVIEWS_DATA.map((review) => {
+            {reviews.map((review) => {
               const { name, id, image, date, rating, reviewText } = review;
               return (
                 <div key={id}>
@@ -154,6 +171,7 @@ function Reviews() {
         </div>
       </div>
       <Footer />
+      <Toaster position="top-right" />
     </>
   );
 }
