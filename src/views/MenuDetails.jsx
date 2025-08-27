@@ -4,7 +4,6 @@ import MENU_CARDS_DATA from "./../configs/Menu";
 import Navbar from "./../components/Navbar";
 import Footer from "./../components/Footer";
 import Button from "./../components/Button";
-import Heading from "./../components/Heading";
 
 function MenuDetails() {
   const [searchParams] = useSearchParams();
@@ -63,7 +62,9 @@ function MenuDetails() {
                     btnVariant="primary"
                     size="md"
                     customStyle="w-fit!"
-                    // You can add order logic or link here
+                    onBtnClick={() => {
+                      handleNavigation("/cart");
+                    }}
                   />
                 </div>
               </div>
