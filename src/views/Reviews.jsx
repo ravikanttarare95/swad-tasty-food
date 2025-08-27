@@ -69,7 +69,12 @@ function Reviews() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (errorMessage.trim().length !== 0) return;
+    if (errorMessage.name.trim().length !== 0)
+      return toast.error(`Fill as per the instruction)`);
+
+    if (errorMessage.reviewText.trim().length !== 0)
+      return toast.error(`Fill as per the instruction`);
+
     const storedReviews = JSON.parse(localStorage.getItem("reviews")) || [];
     console.log(storedReviews);
     const newReview = {
@@ -80,7 +85,7 @@ function Reviews() {
     const updatedReviews = [newReview, ...storedReviews];
 
     localStorage.setItem("reviews", JSON.stringify(updatedReviews));
-    toast.success(`Your Review submitted!(Add your submission logic)`);
+    toast.success(`Review submitted!`);
     setFormData({
       name: "",
       image: "",
@@ -98,7 +103,7 @@ function Reviews() {
           reviewFormStatus ? "flex" : "hidden"
         } fixed inset-0 bg-black/40 backdrop-blur-sm z-[100]`}
       >
-        <div className="relative w-[95%] max-w-[700px] h-fit mx-auto mt-10 rounded-xl overflow-hidden shadow-2xl border border-white/20">
+        <div className="relative w-[95%] max-w-[700px] h-fit mx-auto mt-20 rounded-xl overflow-hidden shadow-2xl border border-white/20">
           <img
             src={SpicesImg}
             alt="Background"
