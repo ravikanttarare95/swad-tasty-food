@@ -25,8 +25,6 @@ function MenuCard({ id, image, title, shortDescription, price, category }) {
       setIsAdded(false);
     }
     // OR setIsAdded(itemIndex > -1)
-
-    console.log("S", itemIndex); ////////////
   }, [id, addedCart]);
 
   const QuantityMinus = (e) => {

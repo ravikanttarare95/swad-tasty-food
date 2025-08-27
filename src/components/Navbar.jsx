@@ -105,7 +105,7 @@ function Navbar({ openNav }) {
               }}
             />
 
-            <Button
+            {/* <Button
               btnVariant="primary"
               btnTitle={
                 <div className="flex items-center gap-1">
@@ -116,7 +116,7 @@ function Navbar({ openNav }) {
               onBtnClick={() => {
                 handleNavigation("sign_in");
               }}
-            />
+            /> */}
           </div>
         </div>
       </div>
