@@ -9,6 +9,7 @@ import SpicesImg from "./../assets/review.jpg";
 import Heading from "./../components/Heading.jsx";
 import { X } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
+import ErrorCompo from "./../components/ErrorCompo.jsx";
 
 function Reviews() {
   const [reviewFormStatus, setReviewFormStatus] = useState(false);
@@ -20,6 +21,10 @@ function Reviews() {
     reviewText: "",
   });
   const [reviews, setReviews] = useState([]);
+  const [errorMessage, setErrorMessage] = useState({
+    name: "",
+    reviewText: "",
+  });
 
   useEffect(() => {
     const storedReviews = JSON.parse(localStorage.getItem("reviews")) || [];
@@ -29,10 +34,42 @@ function Reviews() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (name === "name") {
+      if (value.trim().length < 3) {
+        setErrorMessage((prev) => ({
+          ...prev,
+          name: "Name must be at least 3 characters long",
+        }));
+      } else if (value.trim().length > 50) {
+        setErrorMessage((prev) => ({
+          ...prev,
+          name: "Name cannot exceed 50 characters",
+        }));
+      } else {
+        setErrorMessage((prev) => ({ ...prev, name: "" }));
+      }
+    }
+    if (name === "reviewText") {
+      if (value.trim().length < 10) {
+        setErrorMessage((prev) => ({
+          ...prev,
+          reviewText: "Review must be at least 10 characters long",
+        }));
+      } else if (value.trim().length > 500) {
+        setErrorMessage((prev) => ({
+          ...prev,
+          reviewText: "Review cannot exceed 500 characters",
+        }));
+      } else {
+        setErrorMessage((prev) => ({ ...prev, reviewText: "" }));
+      }
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (errorMessage.trim().length !== 0) return;
     const storedReviews = JSON.parse(localStorage.getItem("reviews")) || [];
     console.log(storedReviews);
     const newReview = {
@@ -59,9 +96,9 @@ function Reviews() {
       <div
         className={`${
           reviewFormStatus ? "flex" : "hidden"
-        } fixed inset-0 items-center justify-center bg-black/40 backdrop-blur-sm z-[100]`}
+        } fixed inset-0 bg-black/40 backdrop-blur-sm z-[100]`}
       >
-        <div className="relative w-[95%] max-w-[700px] rounded-xl overflow-hidden shadow-2xl border border-white/20">
+        <div className="relative w-[95%] max-w-[700px] h-fit mx-auto mt-10 rounded-xl overflow-hidden shadow-2xl border border-white/20">
           <img
             src={SpicesImg}
             alt="Background"
@@ -87,6 +124,7 @@ function Reviews() {
                 onchange={handleChange}
                 placeholder="Your Name"
               />
+              <ErrorCompo message={errorMessage.name} />
               <InputComp
                 type="url"
                 name="image"
@@ -121,7 +159,7 @@ function Reviews() {
                 rows={4}
                 className="bg-white/10 text-white placeholder-white/70 border border-white/30 rounded-lg px-3 py-2 resize-none outline-none focus:border-yellow-400"
               />
-
+              <ErrorCompo message={errorMessage.reviewText} />
               <Button
                 type="submit"
                 btnVariant="secondary"
