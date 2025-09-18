@@ -8,6 +8,7 @@ import About from "./views/About";
 import Review from "./views/Reviews";
 import Cart from "./views/Cart";
 import SignIn from "./views/SignIn";
+import { Toaster } from "react-hot-toast";
 
 const root = createRoot(document.getElementById("root"));
 root.render(
@@ -21,5 +22,6 @@ root.render(
       <Route path="/cart" element={<Cart />} />
       <Route path="/sign_in" element={<SignIn />} />
     </Routes>
+    <Toaster />
   </BrowserRouter>
 );

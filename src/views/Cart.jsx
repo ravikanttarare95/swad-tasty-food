@@ -6,7 +6,7 @@ import {
   handleQuantityMinus,
   handleQuantityPlus,
 } from "./../utils/CartUtils";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import FoodCartImg from "./../assets/food-cart.png";
 import Button from "./../components/Button";
 import { useNavigate } from "react-router";
@@ -125,7 +125,6 @@ function Cart() {
           </div>
         )}
       </div>
-      <Toaster position="top-right" />
     </>
   );
 }

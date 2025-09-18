@@ -8,7 +8,7 @@ import {
   handleQuantityMinus,
   handleQuantityPlus,
 } from "./../../utils/CartUtils";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 function MenuCard({ id, image, title, shortDescription, price, category }) {
   const [addedCart, setAddedCart] = useState(() => {
@@ -120,7 +120,6 @@ function MenuCard({ id, image, title, shortDescription, price, category }) {
           </div>
         </div>
       </div>
-      <Toaster />
     </Link>
   );
 }

@@ -8,7 +8,7 @@ import Button from "./../components/Button.jsx";
 import SpicesImg from "./../assets/review.jpg";
 import Heading from "./../components/Heading.jsx";
 import { X } from "lucide-react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import ErrorCompo from "./../components/ErrorCompo.jsx";
 
 function Reviews() {
@@ -180,18 +180,17 @@ function Reviews() {
         <Heading headingTitle="What Our Customers say . . ." />
         <div className="relative max-w-300 mx-auto mb-20">
           <div className="flex flex-col max-h-125 md:flex-row overflow-scroll scrollbar-hide gap-5 px-5">
-            {reviews.map((review) => {
+            {reviews.map((review, index) => {
               const { name, id, image, date, rating, reviewText } = review;
               return (
-                <div key={id}>
-                  <ReviewCard
-                    name={name}
-                    image={image}
-                    date={date}
-                    rating={rating}
-                    reviewText={reviewText}
-                  />
-                </div>
+                <ReviewCard
+                  key={index}
+                  name={name}
+                  image={image}
+                  date={date}
+                  rating={rating}
+                  reviewText={reviewText}
+                />
               );
             })}
           </div>
@@ -214,7 +213,6 @@ function Reviews() {
         </div>
       </div>
       <Footer />
-      <Toaster position="top-right" />
     </>
   );
 }

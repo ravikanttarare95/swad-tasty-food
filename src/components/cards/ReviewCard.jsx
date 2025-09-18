@@ -1,7 +1,7 @@
 import React from "react";
 import StarRating from "./../StarRating.jsx";
 
-function ReviewCard({ name, id, image, date, rating, reviewText }) {
+function ReviewCard({ name, image, date, rating, reviewText }) {
   return (
     <div className="w-full md:w-85 p-6 rounded-xl shadow-md bg-gray-50 border border-gray-200 hover:shadow-lg transition-shadow my-3">
       <div className="flex items-center space-x-4">
